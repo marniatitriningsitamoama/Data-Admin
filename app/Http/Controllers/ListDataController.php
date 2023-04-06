@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ListData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ListDataController extends Controller
 {
@@ -16,13 +18,30 @@ class ListDataController extends Controller
         // //render view with dataadmin
         return view('listdata.index', compact('listdata'));
     }
+    public function password()
+    {
+        $data['title'] = 'Change Password';
+        return view('listdata.password', $data);
+    }
+    public function password_action(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|current_password',
+            'new_password' => 'required|confirmed',
+        ]);
+        $listdata = ListData::find(Auth::id());
+        $listdata->password = Hash::make($request->new_password);
+        $listdata->save();
+        $request->session()->regenerate();
+        return back()->with('password', 'Password changed');
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('listdata.create');
+        // return view('listdata.create');
     }
 
     /**
@@ -34,6 +53,7 @@ class ListDataController extends Controller
             'nama' => 'required',
             'email' => 'required',
             'status' => 'required',
+            'password' => 'required',
         ]);
 
         ListData::create($request->all());
@@ -56,8 +76,8 @@ class ListDataController extends Controller
      */
     public function edit(string $id)
     {
-        $listdata = ListData::findOrFail($id);
-        return view('listdata.edit', compact('listdata'));
+        // $listdata = ListData::findOrFail($id);
+        // return view('listdata.edit', compact('listdata'));
     }
 
     /**
@@ -69,6 +89,7 @@ class ListDataController extends Controller
             'nama' => 'required',
             'email' => 'required',
             'status' => 'required',
+            'password' => 'required',
         ]);
         $listdata = ListData::findOrFail($id);
 

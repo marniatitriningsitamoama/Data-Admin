@@ -6,9 +6,9 @@
             <div class="float-start">
                 <h2>List Data Admin</h2>
             </div>
-            <div class="float-end">
+            {{-- <div class="float-end">
                 <a class="btn btn-success" href="{{ route('listdata.create') }}"> Tambah List Admin</a>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -24,6 +24,7 @@
             <th>Nama Admin</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Password</th>
             <th width="280px">Action</th>
         </tr>
         @php($nomor = 1)
@@ -34,6 +35,7 @@
                 <td>{{ $listdata->nama }}</td>
                 <td>{{ $listdata->email }}</td>
                 <td>{{ $listdata->status }}</td>
+                <td>{{ $listdata->password }}</td>
                 <td>
                     <form action="{{ route('listdata.destroy', $listdata->id) }}" method="POST">
 

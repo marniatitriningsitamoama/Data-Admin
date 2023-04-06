@@ -7,7 +7,7 @@
                 <h2> Show List Data</h2>
             </div>
             <div>
-                <a class="btn btn-primary" href="{{ route('listdata.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('listdata.index') }}"> Kembali</a>
             </div>
         </div>
     </div>
@@ -28,6 +28,12 @@
                 <div class="form-group">
                     <strong>Status:</strong>
                     {{ $listdata->status }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Password:</strong>
+                    {{ $listdata->password }}
                 </div>
             </div>
         </div>
