@@ -52,7 +52,4 @@
         @endforeach
 
     </table>
-    {{-- <div class="row text-center">
-        {!! $matakuliah->links() !!}
-    </div> --}}
 @endsection
