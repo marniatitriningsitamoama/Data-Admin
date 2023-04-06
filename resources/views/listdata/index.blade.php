@@ -31,7 +31,6 @@
         @foreach ($listdata as $listdata)
             <tr>
                 <td>{{ $nomor++ }}</td>
-                {{-- <td>{{ $matakuliah->nama_matkul }}</td> --}}
                 <td>{{ $listdata->nama }}</td>
                 <td>{{ $listdata->email }}</td>
                 <td>{{ $listdata->status }}</td>
