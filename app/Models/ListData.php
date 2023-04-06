@@ -9,5 +9,5 @@ class ListData extends Model
 {
     use HasFactory;
     protected $table = 'listdata';
-    protected $fillable = ['nama', 'email', 'status'];
+    protected $fillable = ['nama', 'email', 'status','password'];
 }
